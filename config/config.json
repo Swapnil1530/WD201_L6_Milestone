@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Swapnil@1530",
+    "database": "express-L6",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "Swapnil@1530",
+    "database": "todo_l6_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "production": {
+    "username": "postgres",
+    "password": "Swapnil@1530",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
