@@ -13,7 +13,7 @@ app.get("/todos", async function (_request, response) {
   // FILL IN YOUR CODE HERE
   try {
     const allTodo = await Todo.findAll();
-    return response.json(allTodo);
+    return response.status(200).json(allTodo);
   } catch (err) {
     console.log(err);
     return response.status(422).json(err);
@@ -26,7 +26,7 @@ app.get("/todos", async function (_request, response) {
 app.get("/todos/:id", async function (request, response) {
   try {
     const todo = await Todo.findByPk(request.params.id);
-    return response.json(todo);
+    return response.status(200).json(todo);
   } catch (error) {
     console.log(error);
     return response.status(422).json(error);
@@ -58,16 +58,15 @@ app.delete("/todos/:id", async function (request, response) {
   console.log("We have to delete a Todo with ID: ", request.params.id);
   // FILL IN YOUR CODE HERE
   try {
-    const todo = await Todo.findByPk(request.params.id);
-    if (todo) {
-      await todo.destroy();
-      return response.status(200).json(true);
-    } else {
-      return response.json(false);
-    }
+    const todoDelete = await Todo.destroy({
+      where: {
+        id: request.params.id,
+      },
+    });
+    response.status(200).send((todoDelete) ? true : false);
   } catch (err) {
     console.log(err);
-    return response.status(422).json(false);
+    return response.status(422).json(err);
   }
   // First, we have to query our database to delete a Todo by ID.
   // Then, we have to respond back with true/false based on whether the Todo was deleted or not.
