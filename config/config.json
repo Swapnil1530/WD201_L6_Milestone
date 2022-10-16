@@ -2,23 +2,25 @@
   "development": {
     "username": "postgres",
     "password": "Swapnil@1530",
-    "database": "express-L6",
+    "database": "todos",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
-    "password": "Swapnil@1530",
-    "database": "todo_l6_test",
-    "host": "127.0.0.1",
-    "dialect": "postgres",
-    "logging": false
-  },
-  "production": {
-    "username": "postgres",
-    "password": "Swapnil@1530",
-    "database": "database_production",
+    "username": "root",
+    "password": null,
+    "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }
